@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 Widget buildCourseField(
   Map file,
   Function submit,
+  BuildContext context,
 ) {
   // Creating focus nodes for managing focus transitions
   var coursenameFocus = FocusNode();
@@ -66,7 +67,7 @@ Widget buildCourseField(
                   "courseinstnamectrl": courseinstnamectrl.text,
                   "complitiondatectrl": complitiondatectrl.text,
                 });
-                print('object');
+                FocusScope.of(context).requestFocus(courseinstnameFocus);
               },
               decoration: const InputDecoration(
                 border: OutlineInputBorder(),
@@ -166,11 +167,12 @@ Widget buildeducationfeild(
   final FocusNode startedyearFocus = FocusNode();
   final FocusNode passingoutFocus = FocusNode();
 
-  var degreectrl = TextEditingController();
-  var specializationctrl = TextEditingController();
-  var instituectrl = TextEditingController();
-  var startedyearctrl = TextEditingController();
-  var passingoutctrl = TextEditingController();
+  var degreectrl = TextEditingController(text: file['degreectrl']);
+  var specializationctrl =
+      TextEditingController(text: file['specializationctrl']);
+  var instituectrl = TextEditingController(text: file['instituectrl']);
+  var startedyearctrl = TextEditingController(text: file['startedyearctrl']);
+  var passingoutctrl = TextEditingController(text: file['passingoutctrl']);
   return Column(
     children: [
       SizedBox(
@@ -183,30 +185,30 @@ Widget buildeducationfeild(
               child: TextFormField(
                 focusNode: degreeFocus, // Focus control for this field
                 controller: degreectrl,
-                decoration: InputDecoration(
-                  border: const OutlineInputBorder(),
+                decoration: const InputDecoration(
+                  border: OutlineInputBorder(),
                   labelText: 'Degree',
-                  labelStyle: const TextStyle(
+                  labelStyle: TextStyle(
                     color: Color.fromRGBO(17, 45, 78, 1),
                     fontSize: 15,
                     fontWeight: FontWeight.bold,
                     fontFamily: 'Oswald',
                   ),
-                  filled: true,
-                  fillColor: degreeFocus.hasFocus ? Colors.white : null,
-                  focusedBorder: const OutlineInputBorder(
+                  // filled: true,
+                  // fillColor: degreeFocus.hasFocus ? Colors.white : null
+                  focusedBorder: OutlineInputBorder(
                     borderSide:
                         BorderSide(color: Color.fromRGBO(17, 45, 78, 1)),
                   ),
                 ),
                 style: const TextStyle(
                     fontSize: 18, color: Color.fromRGBO(17, 45, 78, 1)),
-                // validator: (value) {
-                //   if (value == null || value.isEmpty) {
-                //     return 'Please enter your degree';
-                //   }
-                //   return null;
-                // },
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Please enter your degree';
+                  }
+                  return null;
+                },
                 onFieldSubmitted: (value) {
                   print("object");
                   submit({
@@ -217,10 +219,9 @@ Widget buildeducationfeild(
                     "passingoutctrl": passingoutctrl.text,
                   });
                   // Move focus to Question
-                  if (value != '') {
-                    print(value);
-                    FocusScope.of(context).requestFocus(specializationFocus);
-                  }
+                  // Move focus to the next field
+
+                  specializationFocus.requestFocus();
                 },
               ),
             ),
@@ -239,8 +240,8 @@ Widget buildeducationfeild(
                   fontWeight: FontWeight.bold,
                   fontFamily: 'Oswald',
                 ),
-                filled: true,
-                fillColor: specializationFocus.hasFocus ? Colors.white : null,
+                // filled: true,
+                // fillColor: specializationFocus.hasFocus ? Colors.white : null,
                 focusedBorder: const OutlineInputBorder(
                   borderSide: BorderSide(color: Color.fromRGBO(17, 45, 78, 1)),
                 ),

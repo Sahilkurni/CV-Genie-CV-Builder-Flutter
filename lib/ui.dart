@@ -699,210 +699,6 @@ class _FormUiState extends State<FormUi> {
                               // Subject TextFormField
                               Column(
                                 children: [
-                                  Row(
-                                    children: [
-                                      Expanded(
-                                        child: TextFormField(
-                                          focusNode:
-                                              degreeFocus, // Focus control for this field
-                                          controller: degreectrl,
-                                          decoration: const InputDecoration(
-                                            border: OutlineInputBorder(),
-                                            labelText: 'Degree',
-                                            labelStyle: TextStyle(
-                                              color:
-                                                  Color.fromRGBO(17, 45, 78, 1),
-                                              fontSize: 15,
-                                              fontWeight: FontWeight.bold,
-                                              fontFamily: 'Oswald',
-                                            ),
-                                            focusedBorder: OutlineInputBorder(
-                                              borderSide: BorderSide(
-                                                  color: Color.fromRGBO(
-                                                      17, 45, 78, 1)),
-                                            ),
-                                          ),
-                                          style: const TextStyle(
-                                              fontSize: 18,
-                                              color: Color.fromRGBO(
-                                                  17, 45, 78, 1)),
-                                          validator: (value) {
-                                            if (value == null ||
-                                                value.isEmpty) {
-                                              return 'Please enter your degree';
-                                            }
-                                            return null;
-                                          },
-                                          onFieldSubmitted: (value) {
-                                            // Move focus to Question
-                                            FocusScope.of(context).requestFocus(
-                                                specializationFocus);
-                                          },
-                                        ),
-                                      ),
-                                      const SizedBox(width: 20),
-                                      Expanded(
-                                        child: TextFormField(
-                                          focusNode:
-                                              specializationFocus, // Focus control for this field
-                                          controller: specializationctrl,
-                                          decoration: const InputDecoration(
-                                            border: OutlineInputBorder(),
-                                            labelText: 'Specialization',
-                                            labelStyle: TextStyle(
-                                              color:
-                                                  Color.fromRGBO(17, 45, 78, 1),
-                                              fontSize: 15,
-                                              fontWeight: FontWeight.bold,
-                                              fontFamily: 'Oswald',
-                                            ),
-                                            focusedBorder: OutlineInputBorder(
-                                              borderSide: BorderSide(
-                                                  color: Color.fromRGBO(
-                                                      17, 45, 78, 1)),
-                                            ),
-                                          ),
-                                          style: const TextStyle(
-                                              fontSize: 18,
-                                              color: Color.fromRGBO(
-                                                  17, 45, 78, 1)),
-                                          validator: (value) {
-                                            if (value == null ||
-                                                value.isEmpty) {
-                                              return 'Please enter your specialization';
-                                            }
-                                            return null;
-                                          },
-                                          onFieldSubmitted: (_) {
-                                            // Move focus to Question
-                                            FocusScope.of(context)
-                                                .requestFocus(institueFocus);
-                                          },
-                                        ),
-                                      ),
-                                      const SizedBox(width: 20),
-                                      Expanded(
-                                        child: TextFormField(
-                                          focusNode:
-                                              institueFocus, // Focus control for this field
-                                          controller: instituectrl,
-                                          decoration: const InputDecoration(
-                                            border: OutlineInputBorder(),
-                                            labelText: 'Institute/College Name',
-                                            labelStyle: TextStyle(
-                                              color:
-                                                  Color.fromRGBO(17, 45, 78, 1),
-                                              fontSize: 15,
-                                              fontWeight: FontWeight.bold,
-                                              fontFamily: 'Oswald',
-                                            ),
-                                            focusedBorder: OutlineInputBorder(
-                                              borderSide: BorderSide(
-                                                  color: Color.fromRGBO(
-                                                      17, 45, 78, 1)),
-                                            ),
-                                          ),
-                                          style: const TextStyle(
-                                              fontSize: 18,
-                                              color: Color.fromRGBO(
-                                                  17, 45, 78, 1)),
-                                          validator: (value) {
-                                            if (value == null ||
-                                                value.isEmpty) {
-                                              return 'Please enter your Institute/College Name';
-                                            }
-                                            return null;
-                                          },
-                                          onFieldSubmitted: (_) {
-                                            // Move focus to Question
-                                            FocusScope.of(context)
-                                                .requestFocus(startedyearFocus);
-                                          },
-                                        ),
-                                      ),
-                                      const SizedBox(width: 20),
-                                      Expanded(
-                                        child: TextFormField(
-                                          focusNode:
-                                              startedyearFocus, // Focus control for this field
-                                          controller: startedyearctrl,
-                                          decoration: const InputDecoration(
-                                            border: OutlineInputBorder(),
-                                            labelText: 'Started Year',
-                                            labelStyle: TextStyle(
-                                              color:
-                                                  Color.fromRGBO(17, 45, 78, 1),
-                                              fontSize: 15,
-                                              fontWeight: FontWeight.bold,
-                                              fontFamily: 'Oswald',
-                                            ),
-                                            focusedBorder: OutlineInputBorder(
-                                              borderSide: BorderSide(
-                                                  color: Color.fromRGBO(
-                                                      17, 45, 78, 1)),
-                                            ),
-                                          ),
-                                          style: const TextStyle(
-                                              fontSize: 18,
-                                              color: Color.fromRGBO(
-                                                  17, 45, 78, 1)),
-                                          validator: (value) {
-                                            if (value == null ||
-                                                value.isEmpty) {
-                                              return 'Please enter your started year';
-                                            }
-                                            return null;
-                                          },
-                                          onFieldSubmitted: (_) {
-                                            // Move focus to Question
-                                            FocusScope.of(context)
-                                                .requestFocus(passingoutFocus);
-                                          },
-                                        ),
-                                      ),
-                                      const SizedBox(width: 20),
-                                      Expanded(
-                                        child: TextFormField(
-                                          focusNode:
-                                              passingoutFocus, // Focus control for this field
-                                          controller: passingoutctrl,
-                                          decoration: const InputDecoration(
-                                            border: OutlineInputBorder(),
-                                            labelText: 'Passing Out Year',
-                                            labelStyle: TextStyle(
-                                              color:
-                                                  Color.fromRGBO(17, 45, 78, 1),
-                                              fontSize: 15,
-                                              fontWeight: FontWeight.bold,
-                                              fontFamily: 'Oswald',
-                                            ),
-                                            focusedBorder: OutlineInputBorder(
-                                              borderSide: BorderSide(
-                                                  color: Color.fromRGBO(
-                                                      17, 45, 78, 1)),
-                                            ),
-                                          ),
-                                          style: const TextStyle(
-                                              fontSize: 18,
-                                              color: Color.fromRGBO(
-                                                  17, 45, 78, 1)),
-                                          validator: (value) {
-                                            if (value == null ||
-                                                value.isEmpty) {
-                                              return 'Please enter your Passing Out year';
-                                            }
-                                            return null;
-                                          },
-                                          onFieldSubmitted: (_) {
-                                            // Move focus to Question
-                                            FocusScope.of(context)
-                                                .requestFocus(passingoutFocus);
-                                          },
-                                        ),
-                                      ),
-                                      const SizedBox(width: 20),
-                                    ],
-                                  ),
                                   ...educationdata
                                       .map((e) => buildeducationfeild(e, (tr) {
                                             setState(() {
@@ -1384,7 +1180,7 @@ class _FormUiState extends State<FormUi> {
                                                   tr['complitiondatectrl'];
                                             });
                                             print(_courseFields);
-                                          })),
+                                          }, context)),
                                   const SizedBox(height: 19),
                                   ElevatedButton(
                                       onPressed: () {
@@ -1480,7 +1276,8 @@ class _FormUiState extends State<FormUi> {
                                               tfskill4ctrl.text,
                                               tfskill5ctrl.text
                                             ],
-                                            coursedata: _courseFields);
+                                            coursedata: _courseFields,
+                                            educationdata: educationdata);
                                         await PdfApi.openFile(pdfFile);
                                       },
                                       // Call handleSubmit on click

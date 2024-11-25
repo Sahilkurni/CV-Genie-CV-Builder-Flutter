@@ -29,6 +29,7 @@ class PdfApi {
     required List plskills,
     required List tfskills,
     required List coursedata,
+    required List educationdata,
   }) async {
     final pdf = Document();
 
@@ -81,12 +82,32 @@ class PdfApi {
               Divider(
                 thickness: 2,
               ),
-              Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-                Text(degree + "(" + specialization + ")",
-                    style: TextStyle(font: ttf)),
-                Text(startedyear + ' / ' + passingout)
-              ]),
-              Text(institue),
+              Column(
+                children: educationdata.map((education) {
+                  return Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                                education['degreectrl']! +
+                                    '(${education['specializationctrl']})' +
+                                    "\n",
+                                style: TextStyle(font: ttf)),
+                            Text(education['instituectrl'])
+                            // UrlLink(
+                            //     child:
+                            //         Text("🔗 Link"), // Use a Unicode link character
+                            //     destination: course['certlinkctrl'])
+                          ]),
+                      Text(
+                          '${education['startedyearctrl']} - ${education['passingoutctrl']}',
+                          style: TextStyle(font: ttf)),
+                    ],
+                  );
+                }).toList(),
+              ),
               SizedBox(height: 10),
               Text("Skills", style: TextStyle(font: ttf)),
               Divider(
@@ -107,15 +128,17 @@ class PdfApi {
                   return Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Column(children: [
-                        Text(course['coursenamectrl']! + "\n",
-                            style: TextStyle(font: ttf)),
-                        Text(course['courseinstnamectrl'])
-                        // UrlLink(
-                        //     child:
-                        //         Text("🔗 Link"), // Use a Unicode link character
-                        //     destination: course['certlinkctrl'])
-                      ]),
+                      Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(course['coursenamectrl']! + "\n",
+                                style: TextStyle(font: ttf)),
+                            Text(course['courseinstnamectrl'])
+                            // UrlLink(
+                            //     child:
+                            //         Text("🔗 Link"), // Use a Unicode link character
+                            //     destination: course['certlinkctrl'])
+                          ]),
                       Text('${course['complitiondatectrl']}',
                           style: TextStyle(font: ttf)),
                     ],
